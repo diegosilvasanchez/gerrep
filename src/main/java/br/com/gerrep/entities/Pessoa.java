@@ -3,10 +3,12 @@ package br.com.gerrep.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -20,6 +22,9 @@ public class Pessoa implements Serializable {
     @GeneratedValue
     @Column(name="id_pessoa", nullable = false, unique = true)
     private Integer idPessoa;
+    
+    @OneToOne(cascade = {CascadeType.DETACH})
+    private Aluno aluno;
     
     @Column(name="nome_completp", nullable = false, length = 80)
     private String nomeCompleto;
@@ -217,9 +222,16 @@ public class Pessoa implements Serializable {
 
     public void setPermissao(String permissao) {
         this.permissao = permissao;
-    }    
-    
+    }        
 
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+        
     @Override
     public int hashCode() {
         int hash = 7;

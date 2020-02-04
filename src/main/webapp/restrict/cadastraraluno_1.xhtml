@@ -9,72 +9,78 @@
 
     <ui:define name="tarefas">
         
-        <p:fieldset legend="Cadastrar Pessoas">
+        <p:fieldset legend="Cadastrar Alunos">
             <br/>
             <h:form>
-                <p:wizard nextLabel="Próxima Aba" backLabel="Aba Anterior">
-                    <p:tab title="Informações Básicas" id="infoPessol">
-                        <p:panel header="Informações Básicas da Pessoa">
-                            <p:growl id="msg0"/>
-                            <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
-
-                                <h:outputLabel/>
-                                <h:inputHidden id="idpessoa" value="#{mbPessoa.pessoa.idPessoa}" />
-                                
-                                <h:outputLabel for="nomepessoa" value="Nome:"/>
-                                <p:inputText id="nomepessoa" size="40" value="#{mbPessoa.pessoa.nome}" 
-                                         onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
-                                         requiredMessage="O Campo [Nome] é obrigatório."/>
-                                
-                                <h:outputLabel for="sexopessoa" value="Sexo:"/>
-                                <p:selectOneMenu id="sexo" value="#{mbPessoa.pessoa.sexo.idSexo}">
-                                    <f:selectItems value="#{bbSexo.sexos}" var="sexo" itemValue="#{sexo.idSexo}" 
-                                                   itemLabel="#{sexo.descricao}"/>
-                                </p:selectOneMenu>
-                                
-                                <h:outputLabel for="emailpessoa" value="E-mail:"/>
-                                <p:inputText id="emailpessoa" size="40" value="#{mbPessoa.pessoa.email}" 
-                                         required="true" requiredMessage="O Campo [E-mail] é obrigatório.">
-                                    <f:validator validatorId="emailValidator" />
-                                </p:inputText>    
-                                
-                                <h:outputLabel for="telefonepessoa" value="Telefone:"/>
-                                <p:inputMask id="telefonepessoa" size="40" value="#{mbPessoa.pessoa.telefone}" 
-                                         onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
-                                         requiredMessage="O Campo [Telefone] é obrigatório." mask="(99) 9999-9999"/>
-                                
-                                <h:outputLabel for="cpfpessoa" value="CPF:"/>
-                                <p:inputText id="cpfpessoa" size="40" value="#{mbPessoa.pessoa.cpf}" 
-                                         onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
-                                         requiredMessage="O Campo [CPF] é obrigatório.">
-                                    <f:validator validatorId="cpfValidator" />
-                                </p:inputText> 
-                                
-                                <h:outputLabel for="nascimentopessoa" value="Data de Nascimento:"/>
-                                <p:calendar id="nascimentopessoa" value="#{mbPessoa.pessoa.dataDeNascimento}" 
-                                         required="true" requiredMessage="O Campo [Data de Nascimento] é obrigatório."
-                                         locale="pt" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>  
-                                
-                                <h:outputLabel for="usuariopessoa" value="Usuário:"/>
-                                <p:inputText id="usuariopessoa" value="#{mbPessoa.pessoa.login}" 
-                                             required="true" requiredMessage="O Campo [Usuário] é obrigatório." size="30">
-                                </p:inputText>     
-                                    
-                                <h:outputLabel for="senhapessoa" value="Senha:"/>
-                                <p:password id="senhapessoa" size="30" maxlength="22" promptLabel="Digite sua Senha" value="#{mbPessoa.confereSenha}"
-                                            weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true"/>
-                                
-                                <h:outputLabel for="senhapessoa2" value="Senha:"/>
-                                <p:password id="senhapessoa2" size="30" maxlength="22" promptLabel="Confirme sua Senha" 
-                                            value="#{mbPessoa.pessoa.senha}" validator="passwordValidator"                                            
-                                            weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true"/>
-                                    
-                                   
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>       
+               
                     
-                     <p:tab title="Informações do Endereço" id="infoEndereco">
+                    <p:panel header="Informações Básicas do Aluno">
+                        <p:growl id="msg0"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+
+                            <h:outputLabel/>
+                            <h:inputHidden id="idpessoa" value="#{mbAluno.aluno.idAluno}" />
+
+                            <h:outputLabel for="apelidopessoa" value="Apelido:"/>
+                            <p:inputText id="apelidopessoa" size="40" value="#{mbAluno.aluno.pessoa.apelido}" 
+                                     onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
+                                     requiredMessage="O Campo [Apelido] é obrigatório."/>
+
+                            <h:outputLabel for="sexopessoa" value="Sexo:"/>
+                            <p:selectOneMenu id="sexo" value="#{mbAluno.pessoa.genero}">
+                                <f:selectItem itemLabel="-- Selecionar --" itemValue="0"/>  
+                                <f:selectItem itemLabel="Masculino" itemValue="M"/>  
+                                <f:selectItem itemLabel="Feminino" itemValue="F"/>  
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="emailpessoa" value="E-mail:"/>
+                            <p:inputText id="emailpessoa" size="40" value="#{mbAluno.aluno.pessoa.email}" 
+                                     required="true" requiredMessage="O Campo [E-mail] é obrigatório.">
+                                <f:validator validatorId="emailValidator" />
+                            </p:inputText>    
+
+                            <h:outputLabel for="telefonepessoa" value="Telefone:"/>
+                            <p:inputMask id="telefonepessoa" size="40" value="#{mbAluno.aluno.pessoa.telefone}" 
+                                     onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
+                                     requiredMessage="O Campo [Telefone] é obrigatório." mask="(99) 9999-9999"/>
+
+                            <h:outputLabel for="cpfpessoa" value="CPF:"/>
+                            <p:inputText id="cpfpessoa" size="40" value="#{mbAluno.pessoa.numeroDocumento}" 
+                                     onkeyup="this.value  =  this.value.toUpperCase()" required="true" 
+                                     requiredMessage="O Campo [CPF] é obrigatório.">
+                                <f:validator validatorId="cpfValidator" />
+                            </p:inputText> 
+
+                            <h:outputLabel for="nascimentopessoa" value="Data de Nascimento:"/>
+                            <p:calendar id="nascimentopessoa" value="#{mbAluno.aluno.pessoa.dataDeNascimento}" 
+                                     required="true" requiredMessage="O Campo [Data de Nascimento] é obrigatório."
+                                     locale="pt" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>  
+
+                            <h:outputLabel for="usuariopessoa" value="Usuário:"/>
+                            <p:inputText id="usuariopessoa" value="#{mbAluno.aluno.pessoa.login}" 
+                                         required="true" requiredMessage="O Campo [Usuário] é obrigatório." size="30">
+                            </p:inputText>     
+
+                            <h:outputLabel for="senhapessoa" value="Senha:"/>
+                            <p:password id="senhapessoa" size="30" maxlength="22" promptLabel="Digite sua Senha" value="#{mbAluno.confereSenha}"
+                                        weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true"/>
+
+                            <h:outputLabel for="senhapessoa2" value="Senha:"/>
+                            <p:password id="senhapessoa2" size="30" maxlength="22" promptLabel="Confirme sua Senha" 
+                                        value="#{mbAluno.aluno.pessoa.senha}" validator="passwordValidator"                                            
+                                        weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" feedback="true"/>
+
+                            <p:panel>
+                                <p:commandButton value="Salvar" action="#{mbAluno.addAluno}"
+                                                 image="ui-icon ui-icon-disk" update="@form"/>
+                                <p:commandButton value="Cancelar" actionListener="#{mbAluno.limpaAluno}" 
+                                                 image="ui-icon ui-icon-close" update="@form"/>
+                            </p:panel>
+                        </h:panelGrid>
+                    </p:panel>
+               
+<!--                    
+                    <p:tab title="Informações do Endereço" id="infoEndereco">
                         <p:panel header="Informações do Endereço">
                             <p:growl id="msg1"/>
                             <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
@@ -131,9 +137,8 @@
                                 
                             </h:panelGrid>
                         </p:panel>
-                     </p:tab>     
-                </p:wizard>
-                
+                     </p:tab>    -->
+                         
             </h:form>
             
         </p:fieldset>        

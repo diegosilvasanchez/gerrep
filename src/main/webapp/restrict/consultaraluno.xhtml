@@ -10,42 +10,42 @@
     <ui:define name="tarefas">
         <h:form prependId="false" id="formPessoa">
             <p:growl id="msg0"/>
-            <p:dataTable id="idTabela" var="pessoa" value="#{mbPessoa.pessoas}" paginator="true" 
+            <p:dataTable id="idTabela" var="aluno" value="#{mbAluno.alunos}" paginator="true" 
                              rows="10" emptyMessage="Nenhum Registro Encontrado"  
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                 
-                    <f:facet name="header">Lista de Pessoas</f:facet>
+                    <f:facet name="header">Lista de Alunos</f:facet>
                     
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Nome"/>
                         </f:facet>
-                        <h:outputText value="#{pessoa.nome}"/>
+                        <h:outputText value="#{aluno.pessoa.nomeCompleto}"/>
                     </p:column>
                     
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Email"/>
                         </f:facet>
-                        <h:outputText value="#{pessoa.email}"/>
+                        <h:outputText value="#{aluno.pessoa.email}"/>
                     </p:column>
                     
                       <p:column>
                         <f:facet name="header">
                             <h:outputText value="Telefone"/>
                         </f:facet>
-                          <h:outputText value="#{pessoa.telefone}"/>
+                          <h:outputText value="#{aluno.pessoa.telefone}"/>
                     </p:column>
                     
                       <p:column>
                         <f:facet name="header">
                             <h:outputText value="Cidade"/>
                         </f:facet>
-                          <h:outputText value="#{pessoa.endereco.cidade.nomeCidade}"/>
+                          <h:outputText value="#{aluno.endereco.cidade}"/>
                     </p:column>
                     
-                    <p:column>
+<!--                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Ações"/>
                         </f:facet>
@@ -65,7 +65,7 @@
                             <f:setPropertyActionListener value="#{pessoa}" target="#{mbPessoa.pessoa}"/>
                             <f:setPropertyActionListener value="#{pessoa.endereco}" target="#{mbPessoa.endereco}"/>
                         </p:commandButton>
-                    </p:column>
+                    </p:column>-->
             </p:dataTable>        
         </h:form>
     </ui:define>

@@ -20,7 +20,7 @@
             <div id="logoff">
                 <h:form>
                     <br/>
-                    <h5><h:outputText value="SEJA BEM VINDO(A) #{bbUsuarioLogado.procuraPessoa().getNome()}!"/></h5>
+                    <h5><h:outputText value="SEJA BEM VINDO(A) #{bbUsuarioLogado.procuraPessoa().getApelido()}!"/></h5>
                     <br/>
                     <a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
 	                <h4>LOGOFF</h4>
@@ -36,10 +36,10 @@
 
                     <p:submenu label="Cadastros">  
                         <p:menuitem value="Cidades" url="/restrict/cadastrarcidade.faces"/>                        
-                        <p:menuitem value="Pessoas" action="#{mbPessoa.limpaPessoa}" ajax="false"/>                        
+                        <p:menuitem value="Aluno" action="#{mbAluno.limpaAluno}" ajax="false"/>                        
                     </p:submenu> 
                     <p:submenu label="Consultas">  
-                        <p:menuitem value="Pessoas" url="/restrict/consultarpessoa.faces"/>  
+                        <p:menuitem value="Alunos" url="/restrict/consultaraluno.faces"/>  
                     </p:submenu>                                      
                 </p:menubar> 
             </h:form>           
